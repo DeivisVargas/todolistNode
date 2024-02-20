@@ -20,9 +20,18 @@ const deleteTask = async (id) =>{
     return deleteTask;
 }
 
+//update
+const updateTask = async (id , task) =>{
+
+    const {title , status } = task ;
+    const updateTask = await connection.execute('UPDATE  TASKS set title = ? , status = ?  where id = ?' , [title, status ,id]);
+    return updateTask;
+}
+
 //para exportar um objeto com todas as funções
 module.exports = {
     getAll,
     creatTask,
-    deleteTask
+    deleteTask ,
+    updateTask
 }
